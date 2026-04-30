@@ -3,122 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Haven</title>
+<title>Book Haven Pro</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #0f0f0f;
-    color: #fff;
+:root{
+  --bg:#ffe7cc;
+  --card:#ffffff;
+  --text:#222;
+  --sub:#555;
 }
 
-header {
-    text-align: center;
-    padding: 30px;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+body.dark{
+  --bg:#0f0f0f;
+  --card:#1c1c1c;
+  --text:#fff;
+  --sub:#bbb;
 }
 
-.container {
-    column-count: 3;
-    column-gap: 15px;
-    padding: 20px;
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d');
+  background-size:cover;
+  background-attachment:fixed;
+  color:var(--text);
 }
 
-.card {
-    background: #1c1c1c;
-    margin: 0 0 15px;
-    padding: 15px;
-    border-radius: 20px;
-    display: inline-block;
-    width: 100%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: transform 0.3s;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  backdrop-filter: blur(10px);
 }
 
-.card:hover {
-    transform: scale(1.03);
+.logo{font-weight:700;font-size:1.5rem;}
+
+.nav input{
+  padding:8px 12px;
+  border-radius:20px;
+  border:none;
 }
 
-.book-title {
-    font-size: 1.2rem;
-    font-weight: 600;
+.toggle-btn{
+  margin-left:10px;
+  padding:8px 12px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
 }
 
-.author {
-    font-size: 0.9rem;
-    color: #aaa;
-    margin-top: 5px;
+.container{
+  column-count:3;
+  column-gap:18px;
+  padding:20px;
 }
 
-@media (max-width: 900px) {
-    .container {
-        column-count: 2;
-    }
+.card{
+  background:var(--card);
+  margin:0 0 18px;
+  border-radius:18px;
+  overflow:hidden;
+  display:inline-block;
+  width:100%;
+  box-shadow:0 5px 25px rgba(0,0,0,0.3);
+  transition:0.3s;
 }
 
-@media (max-width: 600px) {
-    .container {
-        column-count: 1;
-    }
+.card:hover{transform:translateY(-6px) scale(1.01);} 
+
+.book-img{width:100%;height:220px;object-fit:cover;}
+
+.card-content{padding:15px;}
+
+.book-title{font-weight:600;}
+
+.author-box{display:flex;align-items:center;margin-top:10px;}
+
+.author-img{width:35px;height:35px;border-radius:50%;margin-right:10px;}
+
+.desc{font-size:0.8rem;color:var(--sub);margin-top:8px;}
+
+.chat-btn{
+  position:fixed;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  background:#ff914d;
+  color:#fff;
+  padding:12px 15px;
+  border-radius:30px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
+
+@media(max-width:900px){.container{column-count:2;}}
+@media(max-width:600px){.container{column-count:1;}}
 </style>
 </head>
 
 <body>
 
-<header>📚 Book Haven</header>
+<header>
+  <div class="logo">📚 Book Haven</div>
+  <div class="nav">
+    <input type="text" placeholder="Search books...">
+    <button class="toggle-btn" onclick="toggleMode()">🌙</button>
+  </div>
+</header>
 
 <div class="container">
 
 <div class="card">
+  <img class="book-img" src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+  <div class="card-content">
     <div class="book-title">Atomic Habits</div>
-    <div class="author">James Clear</div>
+    <div class="author-box">
+      <img class="author-img" src="https://randomuser.me/api/portraits/men/32.jpg">
+      <div>James Clear</div>
+    </div>
+    <div class="desc">Build good habits and break bad ones effectively.</div>
+  </div>
 </div>
 
 <div class="card">
+  <img class="book-img" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f">
+  <div class="card-content">
     <div class="book-title">The Alchemist</div>
-    <div class="author">Paulo Coelho</div>
+    <div class="author-box">
+      <img class="author-img" src="https://randomuser.me/api/portraits/men/45.jpg">
+      <div>Paulo Coelho</div>
+    </div>
+    <div class="desc">A journey of dreams and destiny.</div>
+  </div>
 </div>
 
 <div class="card">
-    <div class="book-title">Rich Dad Poor Dad</div>
-    <div class="author">Robert Kiyosaki</div>
-</div>
-
-<div class="card">
-    <div class="book-title">Ikigai</div>
-    <div class="author">Héctor García & Francesc Miralles</div>
-</div>
-
-<div class="card">
+  <img class="book-img" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66">
+  <div class="card-content">
     <div class="book-title">Think and Grow Rich</div>
-    <div class="author">Napoleon Hill</div>
-</div>
-
-<div class="card">
-    <div class="book-title">Deep Work</div>
-    <div class="author">Cal Newport</div>
-</div>
-
-<div class="card">
-    <div class="book-title">The Psychology of Money</div>
-    <div class="author">Morgan Housel</div>
+    <div class="author-box">
+      <img class="author-img" src="https://randomuser.me/api/portraits/men/50.jpg">
+      <div>Napoleon Hill</div>
+    </div>
+    <div class="desc">Master mindset for success and wealth.</div>
+  </div>
 </div>
 
 </div>
 
-<!-- Watson Assistant Chatbot -->
+<div class="chat-btn" onclick="openChat()">💬 Chat</div>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle('dark');
+}
+
+let watsonInstance = null;
+function openChat(){
+  if(watsonInstance){
+    watsonInstance.openWindow();
+  }
+}
+</script>
+
+<!-- Watson Assistant -->
 <script>
   window.watsonAssistantChatOptions = {
     integrationID: "1ce52ad7-078b-434c-b073-33ca1b8e3005",
     region: "eu-de",
     serviceInstanceID: "63df9709-ade0-491a-a2ce-2ffea9612eef",
-    onLoad: async (instance) => { await instance.render(); }
+    onLoad: async (instance) => { 
+      watsonInstance = instance;
+      await instance.render(); 
+    }
   };
   setTimeout(function(){
     const t=document.createElement('script');
